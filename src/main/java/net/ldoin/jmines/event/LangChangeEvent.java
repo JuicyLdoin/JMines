@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LangChangeEvent extends Event {
 
+    private static final HandlerList handlers = new HandlerList();
     final String from;
     String to;
 
@@ -22,8 +23,6 @@ public class LangChangeEvent extends Event {
         this.to = to;
 
     }
-
-    private static final HandlerList handlers = new HandlerList();
 
     @NotNull
     public HandlerList getHandlers() {

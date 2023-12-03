@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MineBlockBreakEvent extends BlockBreakEvent {
 
+    private static final HandlerList handlers = new HandlerList();
     final Mine mine;
 
     public MineBlockBreakEvent(@NotNull Block theBlock, @NotNull Player player, Mine mine) {
@@ -18,8 +19,6 @@ public class MineBlockBreakEvent extends BlockBreakEvent {
         this.mine = mine;
 
     }
-
-    private static final HandlerList handlers = new HandlerList();
 
     @NotNull
     public HandlerList getHandlers() {

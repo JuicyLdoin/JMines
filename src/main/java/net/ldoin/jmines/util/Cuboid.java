@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.Spliterators;
 
+@SuppressWarnings({"unused"})
 public class Cuboid implements Iterable<Vec3i> {
 
     protected Vec3i min;
@@ -32,69 +33,6 @@ public class Cuboid implements Iterable<Vec3i> {
 
         min = new Vec3i(Math.min(p1.x, p2.x), Math.min(p1.y, p2.y), Math.min(p1.z, p2.z));
         max = new Vec3i(Math.max(p1.x, p2.x), Math.max(p1.y, p2.y), Math.max(p1.z, p2.z));
-
-    }
-
-    public void shift(Vec3i change) {
-
-        min = min.add(change);
-        max = max.add(change);
-
-    }
-
-    public void expand(Vec3i change) {
-
-        if (change.x > 0)
-            max = max.setX(Math.max(max.x + change.x, min.x));
-        else if (change.x < 0)
-            min = min.setX(Math.min(min.x + change.x, max.x));
-
-        if (change.y > 0)
-            max = max.setY(Math.max(max.y + change.y, min.y));
-        else if (change.y < 0)
-            min = min.setY(Math.min(min.y + change.y, max.y));
-
-        if (change.z > 0)
-            max = max.setZ(Math.max(max.z + change.z, min.z));
-        else if (change.z < 0)
-            min = min.setZ(Math.min(min.z + change.z, max.z));
-
-    }
-
-    public void contract(Vec3i change) {
-
-        if (change.x > 0)
-            min = min.setX(Math.min(min.x + change.x, max.x));
-        else if (change.x < 0)
-            max = max.setX(Math.max(max.x + change.x, min.x));
-
-        if (change.y > 0)
-            min = min.setY(Math.min(min.y + change.y, max.y));
-        else if (change.y < 0)
-            max = max.setY(Math.max(max.y + change.y, min.y));
-
-        if (change.z > 0)
-            min = min.setZ(Math.min(min.z + change.z, max.z));
-        else if (change.z < 0)
-            max = max.setZ(Math.max(max.z + change.z, min.z));
-
-    }
-
-    public void inset(Vec3i change) {
-
-        min = min.add(change);
-        max = max.subtract(change);
-
-        fixOverlap();
-
-    }
-
-    public void outset(Vec3i change) {
-
-        max = max.add(change);
-        min = min.subtract(change);
-
-        fixOverlap();
 
     }
 
@@ -164,48 +102,10 @@ public class Cuboid implements Iterable<Vec3i> {
 
     }
 
-    public Cuboid asFlatCuboid() {
-
-        return new Cuboid(min, max.setY(min.y));
-
-    }
-
     public Cuboid clone() {
 
         return new Cuboid(min, max);
 
-    }
-
-    private void fixOverlap() {
-
-        int val;
-
-        if (min.x > max.x) {
-
-            val = (min.x + max.x) / 2;
-
-            min.setX(val);
-            max.setX(val);
-
-        }
-
-        if (min.y > max.y) {
-
-            val = (min.y + max.y) / 2;
-
-            min.setY(val);
-            max.setY(val);
-
-        }
-
-        if (min.z > max.z) {
-
-            val = (min.z + max.z) / 2;
-
-            min.setZ(val);
-            max.setZ(val);
-
-        }
     }
 
     public Iterator<Vec3i> iterator() {

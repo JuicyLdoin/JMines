@@ -19,7 +19,7 @@ public class ColorUtil {
         while (match.find()) {
 
             String code = str.substring(match.start(), match.end());
-            str = str.replace(code, Character.toString((char) Integer.parseInt(code.replace("\\u+",""),16)));
+            str = str.replace(code, Character.toString((char) Integer.parseInt(code.replace("\\u+", ""), 16)));
 
             match = unicode.matcher(str);
 
@@ -35,7 +35,7 @@ public class ColorUtil {
 
                     String color = str.substring(match.start(), match.end());
 
-                    str = str.replace(color, ChatColor.class.getMethod("of", String.class).invoke(ChatColor.class, color.replace("&", "")) + "");
+                    str = str.replace(color, String.valueOf(ChatColor.class.getMethod("of", String.class).invoke(ChatColor.class, color.replace("&", ""))));
                     match = pattern.matcher(str);
 
                 }

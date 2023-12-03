@@ -30,11 +30,9 @@ public class LangManager {
     final File folder = new File(plugin.getDataFolder(), "langs");
     final FileUtil fileUtil = new FileUtil();
     final ColorUtil colorUtil = new ColorUtil();
-
-    String lang = "en";
     final List<String> supportedLanguages = new ArrayList<>();
-
     final Table<String, String, String> langTable = HashBasedTable.create();
+    String lang = "en";
 
     public String get(String id) {
 

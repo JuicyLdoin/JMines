@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MinePreFillEvent extends MineEvent implements Cancellable {
 
+    private static final HandlerList handlers = new HandlerList();
     boolean cancelled;
 
     public MinePreFillEvent(Mine mine) {
@@ -24,8 +25,6 @@ public class MinePreFillEvent extends MineEvent implements Cancellable {
         cancelled = false;
 
     }
-
-    private static final HandlerList handlers = new HandlerList();
 
     @NotNull
     public HandlerList getHandlers() {

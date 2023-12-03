@@ -4,9 +4,9 @@ import lombok.EqualsAndHashCode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.util.NumberConversions;
 
 @EqualsAndHashCode
+@SuppressWarnings({"unused"})
 public class Vec3i {
 
     public static final Vec3i ZERO = new Vec3i();
@@ -182,36 +182,6 @@ public class Vec3i {
     public float length() {
 
         return (float) Math.sqrt(x * x + y * y + z * z);
-
-    }
-
-    public float lengthSq() {
-
-        return (float) (x * x + y * y + z * z);
-
-    }
-
-    public float dot(Vec3i v1) {
-
-        return (float) (x * v1.x + y * v1.y + z * v1.z);
-
-    }
-
-    public Vec3i cross(Vec3i vec) {
-
-        return new Vec3i(y * vec.z - z * vec.y, vec.x * z - vec.z * x, x * vec.y - y * vec.x);
-
-    }
-
-    public float distance(Vec3f vec) {
-
-        return (float) Math.sqrt(NumberConversions.square(vec.x - (float) x) + NumberConversions.square(vec.z - (float) z) + NumberConversions.square(vec.z - (float) z));
-
-    }
-
-    public float distanceSq(Vec3f vec) {
-
-        return (float) (NumberConversions.square(vec.x - (float) x) + NumberConversions.square(vec.z - (float) z) + NumberConversions.square(vec.z - (float) z));
 
     }
 

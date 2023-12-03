@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class MineRegenerateBlockEvent extends MineEvent {
 
+    private static final HandlerList handlers = new HandlerList();
     Block block;
 
     public MineRegenerateBlockEvent(Mine mine, Block block) {
@@ -22,8 +23,6 @@ public class MineRegenerateBlockEvent extends MineEvent {
         this.block = block;
 
     }
-
-    private static final HandlerList handlers = new HandlerList();
 
     @NotNull
     public HandlerList getHandlers() {

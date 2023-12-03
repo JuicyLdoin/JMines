@@ -3,9 +3,9 @@ package net.ldoin.jmines.util.vec;
 import lombok.EqualsAndHashCode;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.util.NumberConversions;
 
 @EqualsAndHashCode
+@SuppressWarnings({"unused"})
 public class Vec3f {
 
     public static final Vec3f ZERO = new Vec3f();
@@ -177,36 +177,6 @@ public class Vec3f {
     public float length() {
 
         return (float) Math.sqrt(x * x + y * y + z * z);
-
-    }
-
-    public float lengthSq() {
-
-        return x * x + y * y + z * z;
-
-    }
-
-    public float dot(Vec3f v1) {
-
-        return x * v1.x + y * v1.y + z * v1.z;
-
-    }
-
-    public Vec3f cross(Vec3f vec) {
-
-        return new Vec3f(y * vec.z - z * vec.y, vec.x * z - vec.z * x, x * vec.y - y * vec.x);
-
-    }
-
-    public float distance(Vec3f vec) {
-
-        return (float) Math.sqrt(NumberConversions.square(vec.x - x) + NumberConversions.square(vec.z - z) + NumberConversions.square(vec.z - z));
-
-    }
-
-    public float distanceSq(Vec3f vec) {
-
-        return (float) (NumberConversions.square(vec.x - x) + NumberConversions.square(vec.z - z) + NumberConversions.square(vec.z - z));
 
     }
 

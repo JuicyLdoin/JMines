@@ -6,13 +6,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class MineMinedEvent extends MineEvent {
 
+    private static final HandlerList handlers = new HandlerList();
+
     public MineMinedEvent(Mine mine) {
 
         super(mine);
 
     }
-
-    private static final HandlerList handlers = new HandlerList();
 
     @NotNull
     public HandlerList getHandlers() {
