@@ -1,0 +1,11 @@
+name: JMines
+main: net.ldoin.jmines.JMinesPlugin
+
+version: 1.0
+author: Ldoin
+
+api-version: 1.16
+
+commands:
+  jmines:
+    permission: "jmines.editor"
